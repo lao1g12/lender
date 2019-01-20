@@ -26,15 +26,27 @@ public class LenderApplication {
 		LoanFinder loanFinder = new LoanFinder(lenderService, loanService, random);
 
 		String fileLocation = args[0];
-		String amount = args[1];
+		double amount = Double.parseDouble(args[1]);
 //		String fileLocation = "Market Data For Exercise.csv";
-//		String amount = "800";
+//		double amount = Double.parseDouble("15000");
+		if((amount%100) != 0){
+			System.out.println("Amount entered must be multiples of 100");
+			return;
+		}
+		if(amount < 1000){
+			System.out.println("Amount must be greater than 1000");
+			return;
+		}
+		if(amount > 15000){
+			System.out.println("Amount must be less than 15000");
+			return;
+		}
 		List<Lender> lenders = readLendersFromCSV(fileLocation);
 
 		for (Lender l : lenders) { lenderService.loadLender(l); }
-		Loan loan = loanFinder.findLoan(Double.parseDouble(amount));
+		Loan loan = loanFinder.findLoan(amount);
 		if(loan == null){
-			System.out.println("Requested amount too high");
+			System.out.println("Requested amount is more than what is in stock");
 			return;
 		}
 
