@@ -1,5 +1,5 @@
 How to run:
-Currently the .exe doesn't work. However the Jar file (int the target file) can be run in a similar way to the .exe
+Currently the .exe doesn't work. However the Jar file (in the target file) can be run in a similar way to the .exe
 using "java -jar [Jar Name] [Market File] [Amount]". Otherwise the main method can be run in an IDE (However the
 argument entry needs to be commented out and the string inputs need to be uncommented.
 
